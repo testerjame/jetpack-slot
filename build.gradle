@@ -1,0 +1,20 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.19.3'   // non-remapping Loom for unobfuscated 26.x
+    id 'java'
+}
+
+version = project.mod_version
+group = 'dev.jetpackslot'
+base { archivesName = 'jetpack-slot' }
+
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    // Player Jetpack is NOT a compile dependency: its classes are targeted by name in the mixins.
+}
+
+tasks.withType(JavaCompile).configureEach { options.release = 25 }
+java { sourceCompatibility = JavaVersion.VERSION_25; targetCompatibility = JavaVersion.VERSION_25 }
+processResources { inputs.property 'version', project.version; filesMatching('fabric.mod.json') { expand 'version': project.version } }

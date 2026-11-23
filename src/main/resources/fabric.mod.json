@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "jetpackslot",
+  "version": "${version}",
+  "name": "Jetpack Slot",
+  "description": "Gives the Player Jetpack its own inventory slot so it no longer occupies the chestplate slot.",
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": { "main": ["dev.jetpackslot.JetpackSlot"] },
+  "mixins": ["jetpackslot.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.20.1",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*",
+    "aeroforge": "1.0.0"
+  },
+  "breaks": { "elytraslot": "*" }
+}
